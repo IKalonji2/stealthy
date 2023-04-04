@@ -11,14 +11,59 @@
     font-weight: 700;
 }
 
+:host ::ng-deep .p-card {
+    background: linear-gradient(to top, gray, var(--primary-color));
+}
+
+:host ::ng-deep .p-menubar {
+    background: linear-gradient(to left, white, var(--primary-color));
+}
+
 .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     text-align: center;
     margin-top: 10px;
     height: 80vh;
 }
 
-.top-image {
+.content .top-image {
     width: 100%;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    width: fit-content;
+}
+
+.name .super {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+}
+
+.name .sub {
+    text-align: end;
+    font-size: x-small;
+    font-weight: 500;
+}
+
+.devider {
+    border-width: 1px;
+    border-style: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--surface-b), var(--primary-color), var(--surface-b));
+    border-left: none;
+    border-right: none;
 }
 
 :host ::ng-deep .p-tabview-nav {
@@ -37,7 +82,7 @@
 }
 
 @media only screen and (width > 760px) {
-    .top-image {
+    .content .top-image {
         width: fit-content;
     }
 }

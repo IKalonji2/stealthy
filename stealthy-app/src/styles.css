@@ -1,5 +1,5 @@
 @import url('../node_modules/primeicons/primeicons.css');
-@import url('../node_modules/primeng/resources/themes/saga-green/theme.css');
+@import url('../node_modules/primeng/resources/themes/saga-blue/theme.css');
 @import url('../node_modules/primeng/resources/primeng.min.css');
 
 * {
@@ -22,5 +22,12 @@
     body {
         margin-left: 15vw;
         margin-right: 15vw;
+    }
+}
+
+@media only screen and (width > 1440px) {
+    body {
+        margin-left: 25vw;
+        margin-right: 25vw;
     }
 }
