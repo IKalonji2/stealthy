@@ -12,6 +12,7 @@ import { SplitterModule } from 'primeng/splitter';
 import { TabViewModule } from 'primeng/tabview';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
+import { MessagesModule } from 'primeng/messages';
 
 import {FormsModule} from '@angular/forms'
 
@@ -30,7 +31,7 @@ import {FormsModule} from '@angular/forms'
     TabViewModule,
     InputNumberModule,
     InputTextModule,
-
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

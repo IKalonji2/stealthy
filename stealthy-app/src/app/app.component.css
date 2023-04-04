@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+}
+
+.header img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.header .title {
+    font-weight: 700;
+}
+
+.content {
+    text-align: center;
+    margin-top: 10px;
+    height: 80vh;
+}
+
+.top-image {
+    width: 100%;
+}
+
+:host ::ng-deep .p-tabview-nav {
+    display: flex;
+    justify-content: space-between;
+    background: var(--surface-e);
+    border-radius: 5px;
+}
+
+:host ::ng-deep .p-tabview-nav * {
+    width: 100%;
+}
+
+:host ::ng-deep .p-tabview > * {
+    background: var(--surface-b);
+}
+
+@media only screen and (width > 760px) {
+    .top-image {
+        width: fit-content;
+    }
+}

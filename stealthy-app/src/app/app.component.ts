@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContractService } from './contract.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { ContractService } from './contract.service';
 })
 export class AppComponent implements OnInit{
   title = 'stealthy-app';
+  icon = 'pi pi-arrow-right';
+  copyMessage: any;
   navItems = [
     {
       label: 'stealthy',
@@ -33,7 +36,8 @@ export class AppComponent implements OnInit{
   wallet: string = "Connect Tronlink Wallet";
   walletHex: any;
 
-  constructor(private service:ContractService){
+  constructor(private service:ContractService, 
+    private clipboard: Clipboard){
   }
 
   ngOnInit(): void {
@@ -80,6 +84,10 @@ export class AppComponent implements OnInit{
       return;
     }
     alert("Input details are incorrect! Check and resubmit.")
+  }
+
+  copyAddress() {
+    this.clipboard.copy(this.wallet);
   }
 
 }
