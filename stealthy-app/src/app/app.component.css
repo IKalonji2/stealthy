@@ -55,7 +55,6 @@
     gap: 10px;
     text-align: center;
     margin-top: 10px;
-    height: 80vh;
 }
 
 .content .top-image {
@@ -120,6 +119,30 @@ p {
 
 :host ::ng-deep .p-tabview > * {
     background: var(--surface-b);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 15vw;
+    right: 15vw;
+    padding: 15px;
+    background-color: var(--surface-a);
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+    color: gray;
+    border-width: 1px;
+    border-style: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--surface-b), var(--primary-color), var(--surface-b));
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.footer img {
+    height: 10px;
 }
 
 @media only screen and (width > 900px) {

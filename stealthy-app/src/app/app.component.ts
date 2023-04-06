@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContractService } from './contract.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { ConfirmationService } from 'primeng/api';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +10,12 @@ import { Clipboard } from '@angular/cdk/clipboard';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'stealthy-app';
-  icon = 'pi pi-arrow-right';
+  title = 'Stealthy';
+  year = new Date().getFullYear();
   copyMessage: any;
-  navItems = [
-    {
-      label: 'stealthy',
-    }
-  ]
+
+  instructions: any;
+  
   chains = [
     {
       name: "Tron Testnet",
@@ -37,7 +37,10 @@ export class AppComponent implements OnInit{
   walletHex: any;
 
   constructor(private service:ContractService, 
-    private clipboard: Clipboard){
+    private clipboard: Clipboard,
+    private confirmationService: ConfirmationService,
+    private dataService: DataService){
+      this.instructions = dataService.getInstructions();
   }
 
   ngOnInit(): void {
@@ -67,13 +70,22 @@ export class AppComponent implements OnInit{
     return false;
   }
 
-  sendfunds(){
-    if(this.amount > 0 && this.correctPasswordFormat('send')){
-      const _address = this.service.deposit(this.password, this.amount);
-      alert("Transaction confirmed, withdrawal addres: " + _address + "Provide the address and password to the receiver.")
-      return;
-    }
-    alert("Input details are incorrect! Check and resubmit.")
+  sendfunds() {
+    this.confirmationService.confirm({
+      message: `Are you sure you want to deposit an amount of, ${this.amount}?`,
+      header: 'Deposit Funds',
+      accept: async () => {
+        if(this.amount > 0 && this.correctPasswordFormat('send')) {
+          await this.service.deposit(this.password, this.amount).then(address => {
+            alert("Transaction confirmed, withdrawal addres: " + address + "Provide the address and password to the receiver.");
+          }).catch(e => {
+
+          });
+        } else {
+          alert("Input details are incorrect! Check and resubmit.");
+        }
+      }
+    });
   }
 
   withdrawfunds(){

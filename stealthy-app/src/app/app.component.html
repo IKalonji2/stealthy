@@ -26,9 +26,25 @@
     </div>
   </p-card>
 
+  <div class="devider">Getting Started...</div>
+  
+  <div *ngFor="let instruction of instructions">
+    <b class="target">{{instruction.target}}</b>
+    <p-carousel [value]="instruction.items" [numVisible]="1" [numScroll]="1">
+      <ng-template let-item pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+          <div>
+            <h4 class="mb-1">{{ item.name }}</h4>
+            <h6 class="mt-0 mb-3">{{ item.description }}</h6>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+
   <div class="devider"> - Transact - </div>
   
-  <p-tabView>
+  <p-tabView [style]="{'margin-top': '20px'}">
     <p-tabPanel header="Deposit">
       <div *ngIf="!loggedIn">
         <div class="flex flex-column gap-2">
@@ -118,3 +134,17 @@
     </p-tabPanel>
   </p-tabView>
 </div>
+
+<div class="footer">
+  <img src="../assets/stealthy500x276.png">
+  Stealthy @{{year}}
+</div>
+
+<p-confirmDialog #cd [style]="{width: '40vw'}" [breakpoints]="{'900px':'90vw'}">
+  <ng-template pTemplate="footer">
+    <div class="buttons">
+      <button pButton class="p-button-sm p-button-raised p-button-warning" label="Cancel" (click)="cd.reject()" style="width: 100%;"></button>
+      <button pButton class="p-button-sm p-button-raised p-button-success" label="Confirm" (click)="cd.accept()" style="width: 100%;"></button>
+    </div>
+  </ng-template>
+</p-confirmDialog>

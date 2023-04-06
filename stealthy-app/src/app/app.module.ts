@@ -13,6 +13,10 @@ import { TabViewModule } from 'primeng/tabview';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CarouselModule } from 'primeng/carousel';
+
+import { ConfirmationService } from 'primeng/api';
 
 import {FormsModule} from '@angular/forms'
 
@@ -31,9 +35,11 @@ import {FormsModule} from '@angular/forms'
     TabViewModule,
     InputNumberModule,
     InputTextModule,
-    MessagesModule
+    MessagesModule,
+    ConfirmDialogModule,
+    CarouselModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
