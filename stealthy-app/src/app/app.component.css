@@ -1,3 +1,21 @@
+.nav {
+    position: fixed;
+    left: 5px;
+    right: 5px;
+    top: 0;
+    background-color: var(--surface-a);
+    height: 50px;
+    z-index: 999999;
+}
+
+:host ::ng-deep .p-menubar {
+    position: fixed;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    background: linear-gradient(to left, white, var(--primary-color));
+}
+
 .header {
     display: flex;
 }
@@ -11,12 +29,20 @@
     font-weight: 700;
 }
 
-:host ::ng-deep .p-card {
-    background: linear-gradient(to top, gray, var(--primary-color));
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding-top: 15px;
 }
 
-:host ::ng-deep .p-menubar {
-    background: linear-gradient(to left, white, var(--primary-color));
+.content .top-image {
+    width: 100%;
+}
+
+:host ::ng-deep .p-card {
+    background: linear-gradient(to top, gray, var(--primary-color));
 }
 
 .row {
@@ -46,18 +72,6 @@
 .button {
     display: flex;
     gap: 10px;
-    width: 100%;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.content .top-image {
     width: 100%;
 }
 
@@ -96,12 +110,12 @@ p {
     color: var(--text-color);
     font-weight: 700;
     font-size: large;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 10px;
     border-width: 1px;
     border-style: solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to right, var(--surface-b), var(--primary-color), var(--surface-b));
+    border-image-source: linear-gradient(to right, var(--surface-b), var(--primary-color), var(--purple-500), var(--primary-color), var(--surface-b));
     border-left: none;
     border-right: none;
 }
@@ -124,8 +138,8 @@ p {
 .footer {
     position: fixed;
     bottom: 0;
-    left: 15vw;
-    right: 15vw;
+    left: 5px;
+    right: 5px;
     padding: 15px;
     background-color: var(--surface-a);
     text-align: center;
@@ -135,7 +149,7 @@ p {
     border-width: 1px;
     border-style: solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to right, var(--surface-b), var(--primary-color), var(--surface-b));
+    border-image-source: linear-gradient(to right, var(--surface-b), var(--primary-color), var(--purple-500), var(--primary-color), var(--surface-b));
     border-left: none;
     border-right: none;
     border-bottom: none;
@@ -172,5 +186,42 @@ p {
         display: flex;
         gap: 10px;
         width: 50%;
+    }
+
+    .nav {
+        position: fixed;
+        left: 15vw;
+        right: 15vw;
+        top: 0;
+        background-color: var(--surface-a);
+        height: 50px;
+    }
+    
+    :host ::ng-deep .p-menubar {
+        left: 15vw;
+        right: 15vw;
+    }
+
+    .footer {
+        left: 15vw;
+        right: 15vw;
+    }
+}
+
+@media only screen and (width > 1440px) {
+
+    .nav {
+        left: 25vw;
+        right: 25vw;
+    }
+    
+    :host ::ng-deep .p-menubar {
+        left: 25vw;
+        right: 25vw;
+    }
+
+    .footer {
+        left: 25vw;
+        right: 25vw;
     }
 }

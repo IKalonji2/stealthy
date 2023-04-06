@@ -1,16 +1,18 @@
-<p-menubar>
-  <ng-template pTemplate="start">
-    <div class="header">
-      <img src="../assets/stealthy500x276.png" />
-      <div class="title">Stealthy</div>
-    </div>
-  </ng-template>  
-
-  <ng-template pTemplate="end">
-    <button pButton *ngIf="!loggedIn" label="Connect" [pTooltip]="wallet" class="p-button-raised p-button-text p-button-sm" (click)="connectWallet()" icon="pi pi-arrow-right" iconPos="right"></button>
-    <button pButton *ngIf="loggedIn" label="Copy Address" [pTooltip]="wallet" class="p-button-raised p-button-text p-button-sm" (click)="copyAddress()" icon="pi pi-copy" iconPos="right"></button>
-  </ng-template>  
-</p-menubar>
+<div class="nav">
+  <p-menubar>
+    <ng-template pTemplate="start">
+      <div class="header">
+        <img src="../assets/stealthy500x276.png" />
+        <div class="title">Stealthy</div>
+      </div>
+    </ng-template>  
+  
+    <ng-template pTemplate="end">
+      <button pButton *ngIf="!loggedIn" label="Connect" [pTooltip]="wallet" class="p-button-raised p-button-text p-button-sm" (click)="connectWallet()" icon="pi pi-arrow-right" iconPos="right"></button>
+      <button pButton *ngIf="loggedIn" label="Copy Address" [pTooltip]="wallet" class="p-button-raised p-button-text p-button-sm" (click)="copyAddress()" icon="pi pi-copy" iconPos="right"></button>
+    </ng-template>  
+  </p-menubar>
+</div>
 
 <div class="content">
   <p-card>

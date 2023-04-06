@@ -89,13 +89,22 @@ export class AppComponent implements OnInit{
   }
 
   withdrawfunds(){
-    if(this.contract != "" && this.passwordWithdraw.length == 8){
-      let withdrawalAddr = this.toAddress != "" ? this.toAddress : this.wallet; 
-      const success = this.service.withdraw(this.passwordWithdraw, withdrawalAddr, this.contract);
-      alert("Transaction confirmed with status: " + success);
-      return;
-    }
-    alert("Input details are incorrect! Check and resubmit.")
+    this.confirmationService.confirm({
+      message: `Are you sure you want to withdraw funds to address,  ${this.toAddress ? this.toAddress : this.wallet }?`,
+      header: `Withdraw Funds`,
+      accept: async () => {
+        if(this.contract != "" && this.passwordWithdraw.length == 8){
+          let withdrawalAddr = this.toAddress != "" ? this.toAddress : this.wallet; 
+          await this.service.withdraw(this.passwordWithdraw, withdrawalAddr, this.contract).then(data => {
+            alert("Transaction confirmed with status: " + data);
+          }).catch(async e => {
+
+          })
+        } else {
+          alert("Input details are incorrect! Check and resubmit.");
+        }
+      }
+    });
   }
 
   cancelDeposit() {

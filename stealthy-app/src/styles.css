@@ -20,6 +20,7 @@
 
 body {
     margin-bottom: 70px;
+    margin-top: 50px;
 }
 
 @media only screen and (width > 900px) {
