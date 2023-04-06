@@ -86,6 +86,18 @@ export class AppComponent implements OnInit{
     alert("Input details are incorrect! Check and resubmit.")
   }
 
+  cancelDeposit() {
+    this.amount = 0;
+    this.password = "";
+    this.confirmPassword = "";
+  }
+
+  cancelWithdrawal() {
+    this.contract = "";
+    this.toAddress = "";
+    this.passwordWithdraw = "";
+  }
+
   copyAddress() {
     this.clipboard.copy(this.wallet);
   }

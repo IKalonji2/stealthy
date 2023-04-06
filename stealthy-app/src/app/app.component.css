@@ -19,6 +19,36 @@
     background: linear-gradient(to left, white, var(--primary-color));
 }
 
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.row small {
+    font-size: xx-small;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.buttons button {
+    width: 100%;
+}
+
+.button {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -36,6 +66,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+p {
+    font-size: small;
+    font-style: italic;
+    font-weight: 600;
 }
 
 .name {
@@ -58,6 +94,11 @@
 }
 
 .devider {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: large;
+    margin-top: 20px;
+    padding: 10px;
     border-width: 1px;
     border-style: solid;
     border-image-slice: 1;
@@ -81,8 +122,32 @@
     background: var(--surface-b);
 }
 
-@media only screen and (width > 760px) {
+@media only screen and (width > 900px) {
     .content .top-image {
         width: fit-content;
+    }
+
+    .row div {
+        width: 32%;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .button {
+        display: flex;
+        gap: 10px;
+        width: 50%;
     }
 }

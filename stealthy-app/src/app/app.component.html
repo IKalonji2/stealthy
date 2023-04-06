@@ -26,79 +26,95 @@
     </div>
   </p-card>
 
-  <div class="devider"></div>
+  <div class="devider"> - Transact - </div>
   
-  <p-card header="Transact" style="text-align: center;">
-    <p-tabView>
-      <p-tabPanel header="Deposit">
-        <div *ngIf="!loggedIn">
-          <div class="flex flex-column gap-2">
-            <label htmlFor="amount">Connect Wallet to Transact!</label>
+  <p-tabView>
+    <p-tabPanel header="Deposit">
+      <div *ngIf="!loggedIn">
+        <div class="flex flex-column gap-2">
+          <label htmlFor="amount">Connect Wallet to Transact!</label>
+        </div>
+      </div>
+
+      <div *ngIf="loggedIn" class="flex flex-column gap-2 mt-2">
+        
+        <div class="row">
+          <div>
+            <span class="p-float-label flex flex-column">
+              <p-inputNumber id="amount" [(ngModel)]="amount" [style]="{'width': '100%'}" ></p-inputNumber>
+              <label htmlFor="amount">Amount</label>
+            </span>
+            <small>Enter the amount you would like to send.</small>
+          </div>
+
+          <div>
+            <span class="p-float-label flex flex-column" >
+              <input pInputText id="password" type="password" [(ngModel)]="password" [style]="{'width': '100%'}" />
+              <label htmlFor="password">Withdrawal Password</label>
+            </span>
+            <small>Enter the password to be used for withdrawal. Alphanumeric, max 8 characters.</small>
+          </div>
+
+          <div>
+            <span class="p-float-label flex flex-column" >
+              <input pInputText id="confirm" type="password" [(ngModel)]="confirmPassword" [style]="{'width': '100%'}" />
+              <label htmlFor="confirm">Confirm Password</label>
+            </span>
+            <small>Re-enter your withdrawal password.</small>
           </div>
         </div>
 
-        <div *ngIf="loggedIn">
-          <div class="flex flex-column gap-2">
-            <label htmlFor="amount">Amount</label>
-            <input pInputText id="amount" pKeyFilter="money" aria-describedby="amount-help" [(ngModel)]="amount" />
-            <small id="amount-help">Enter the amount you would like to send.</small>
-          </div>
-
-          <br>
-
-          <div class="flex flex-column gap-2">
-            <label htmlFor="password">Withdraw Password</label>
-            <input pInputText id="password" pKeyFilter="alphanum" type="password" aria-describedby="password-help" [(ngModel)]="password"/>
-            <small id="password-help">Enter the password to be used for withdrawal. Alphanumeric, max 8 characters</small>
-          </div>
-
-          <div class="flex flex-column gap-2">
-            <label htmlFor="confirm">Confirm Password</label>
-            <input pInputText id="confirm" pKeyFilter="alphanum" type="password" aria-describedby="confirm-help" [(ngModel)]="confirmPassword"/>
-            <small id="confirm-help">Enter the password to be used for withdrawal. Alphanumeric, max 8 characters</small>
-          </div>
-
-          <br>
-
-          <p-button label="Confirm" (click)="sendfunds()"></p-button>
-        </div>
-      </p-tabPanel>
-
-      <p-tabPanel header="Withdraw">
-        <div *ngIf="!loggedIn">
-          <div class="flex flex-column gap-2">
-            <label htmlFor="amount">Connect Wallet to proceed!</label>
+        <div class="buttons">
+          <div class="button">
+            <button pButton label="Restart" (click)="cancelDeposit()" class="p-button-raised p-button-sm p-button-warning" [style]="{'width':'100%'}"></button>
+            <button pButton label="Confirm" (click)="sendfunds()" class="p-button-raised p-button-sm p-button-success" [style]="{'width':'100%'}"></button>
           </div>
         </div>
+      </div>
+    </p-tabPanel>
 
-        <div *ngIf="loggedIn">
-          <div class="flex flex-column gap-2">
-            <label htmlFor="address">Send Contract Address</label>
-            <input pInputText id="address" pKeyFilter="money" aria-describedby="address-help" [(ngModel)]="contract"/>
-            <small id="amount-help">Withdrawal contract from sender.</small>
-          </div>
-
-          <br>
-
-          <div class="flex flex-column gap-2">
-            <label htmlFor="amount">Withdraw to Address</label>
-            <input pInputText id="alphanum" pKeyFilter="money" aria-describedby="amount-help" [(ngModel)]="toAddress"/>
-            <small id="amount-help">Where to withdraw, leave blank if withdrawing to connected wallet.</small>
-          </div>
-
-          <br>
-
-          <div class="flex flex-column gap-2">
-            <label htmlFor="passwordWithdraw">Withdraw Password</label>
-            <input pInputText id="passwordWithdraw" pKeyFilter="alphanum" type="password" aria-describedby="passwordWithdraw-help" [(ngModel)]="passwordWithdraw" pKeyFilter="alphanum"/>
-            <small id="passwordWithdraw-help">Enter the withdraw password.</small>
-          </div>
-
-          <br>
-
-          <p-button label="Confirm" (click)="withdrawfunds()"></p-button>
+    <p-tabPanel header="Withdraw">
+      <div *ngIf="!loggedIn">
+        <div class="flex flex-column gap-2">
+          <label htmlFor="amount">Connect Wallet to Transact!</label>
         </div>
-      </p-tabPanel>
-    </p-tabView>
-  </p-card>
+      </div>
+
+      <div *ngIf="loggedIn" class="flex flex-column gap-2 mt-2">
+        
+        <div class="row">
+          <div>
+            <span class="p-float-label flex flex-column" >
+              <input pInputText id="address" type="password" [(ngModel)]="contract" [style]="{'width': '100%'}" />
+              <label htmlFor="address">Contract Address</label>
+            </span>
+            <small>Withdrawal contract from sender.</small>
+          </div>
+
+          <div>
+            <span class="p-float-label flex flex-column" >
+              <input pInputText id="alphanum" type="password" [(ngModel)]="toAddress" [style]="{'width': '100%'}" />
+              <label htmlFor="alphanum">Withdrawal Address</label>
+            </span>
+            <small>Where to withdraw, leave blank if withdrawing to connected wallet.</small>
+          </div>
+
+          <div>
+            <span class="p-float-label flex flex-column" >
+              <input pInputText id="passwordWithdraw" type="password" [(ngModel)]="passwordWithdraw" [style]="{'width': '100%'}" />
+              <label htmlFor="passwordWithdraw">Withdrawal Password</label>
+            </span>
+            <small>Enter the withdraw password.</small>
+          </div>
+        </div>
+        
+        <div class="buttons">
+          <div class="button">
+            <button pButton label="Restart" (click)="cancelWithdrawal()" class="p-button-raised p-button-sm p-button-warning" [style]="{'width':'100%'}"></button>
+            <button pButton label="Confirm" (click)="withdrawfunds()" class="p-button-raised p-button-sm p-button-success" [style]="{'width':'100%'}"></button>
+          </div>
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
 </div>
